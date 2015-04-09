@@ -360,7 +360,11 @@ if ("ontouchstart" in document.documentElement) {
     
 -->
 <script src="js/impress.js"></script>
-<script>impress().init();</script>
+<script>
+    var api = impress();
+    api.init();
+    api.goto(0);
+</script>
 
 <!--
     

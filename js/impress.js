@@ -401,6 +401,15 @@
             
             triggerEvent(root, "impress:init", { api: roots[ "impress-root-" + rootId ] });
         };
+
+        // used to reinitialize the steps when a step is added, removed or mofified
+        // also after the reinitialization the viewport is going to the current active step
+        var reinitSteps = function() {
+            steps = $$(".step", root);
+            steps.forEach( initStep );
+            goto(activeStep);
+        };
+
         
         // `getStep` is a helper function that returns a step element defined by parameter.
         // If a number is given, step with index given by the number is returned, if a string
@@ -597,6 +606,12 @@
         }, false);
         
         // Adding hash change support.
+        /* 
+         * We are using this for of impress.js inside our editor, where we don't want the
+         * hash support so we have to turn it off. We will not delete the code because nobody knows
+         * when this feature will be turned on, so we will just comment it
+         */
+        /* 
         root.addEventListener("impress:init", function(){
             
             // last hash detected
@@ -627,6 +642,7 @@
             // by selecting step defined in url or first step of the presentation
             goto(getElementFromHash() || steps[0], 0);
         }, false);
+        */
         
         body.classList.add("impress-disabled");
         
@@ -635,7 +651,9 @@
             init: init,
             goto: goto,
             next: next,
-            prev: prev
+            prev: prev,
+            initStep: initStep,
+            reinitSteps: reinitSteps
         });
 
     };
