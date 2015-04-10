@@ -13,11 +13,12 @@ For our purposses we don't want to change the broswer's url on every step, so we
 We are extending the API with a custom function which is used to reinitialize the steps when a new slide is added, removed or changed dynamically from our editor.
 
   - **substeps**
-The substeps are a part that every presentation should have and this is one of the main cons of the impress.js project.
-Now with this patch you can add a ```substep``` class to every element inside a step in you don't have to warry for anything else. We will move on every substep in a slide. For now we do not support inline animations and transitions for the substeps so you can style them with CSS. All you have to know is the classes which specifies their state.
-There are 3 classes - ```past```, ```entered``` and ```future``` and I think that their names are enough to understand them. 
 
-** Warning **
+The substeps are a part that every presentation should contains and this is one of the main cons of the impress.js project.
+Now with this patch you can add a ```substep``` class to every element inside a step and you don't have to worry about anything else. We will move on every substep in a slide. For now we do not support inline animations and transitions for the substeps but you can style them with pure CSS. All you have to know is the classes which specifies their state.
+There are 3 classes - ```past```, ```entered``` and ```future``` and I think that their names are enough to understand how to use them. 
+
+**Warning**
 This version is still under dev and we make changes now, so if you find any bugs or problems you can nottify us with opening an issue or simply contribute to the project to fix them.
 
   
