@@ -423,6 +423,13 @@
             }
             return (step && step.id && stepsData["impress-" + step.id]) ? step : null;
         };
+
+        // TODO
+        var getActiveSubstep = function() {
+            var activeSubstep = $('.substep.entered', activeStep);
+
+            return activeSubstep;
+        };
         
         // used to reset timeout for `impress:stepenter` event
         var stepEnterTimeout = null;
@@ -556,9 +563,63 @@
             
             return el;
         };
+
+        var gotoSubstep = function(substep, duration) {
+
+            var activeSubstep = getActiveSubstep();
+
+            if (activeSubstep) {
+                activeSubstep.classList.remove("entered");
+
+                if (substep.classList.contains('past')) {
+                    activeSubstep.classList.remove("past");
+                    activeSubstep.classList.add("future");
+                }
+                else {
+                    activeSubstep.classList.add("past");
+                }
+            }
+
+            substep.classList.remove('future');
+            substep.classList.add('entered');
+            //substep.classList.add('past');
+
+
+        };
         
         // `prev` API function goes to previous step (in document order)
         var prev = function () {
+
+            // We should check is there are any substeps in this step
+            var substeps = $$('.substep', activeStep);
+            if (substeps) {
+                // if we have a substeps it will be a good idea to find that one which is active
+                var activeSubstep = getActiveSubstep();
+
+                // If we don't have, our next substep will be the first one
+                var prevSubstep;
+                if (activeSubstep) {
+                    prevSubstep = substeps.indexOf(activeSubstep) - 1;
+
+                    // Check is the prev step real and go to it
+                    if (prevSubstep >= 0) {
+                        prevSubstep = substeps[prevSubstep];
+                        return gotoSubstep(prevSubstep);
+                    }
+                    else {
+                        // this is the first substep in this step
+                        // we should hide it and this way the step will looks like 
+                        // that the user is not entered it
+                        activeSubstep.classList.remove('entered');
+                        activeSubstep.classList.add('future');
+                        return;
+                    }
+                }
+
+                // else, we don't have any active substeps and we should go back to the prevous slide
+            }
+
+            // Go to prev step
             var prev = steps.indexOf( activeStep ) - 1;
             prev = prev >= 0 ? steps[ prev ] : steps[ steps.length-1 ];
             
@@ -567,6 +628,30 @@
         
         // `next` API function goes to next step (in document order)
         var next = function () {
+
+            // We should check is there are any substeps in this step
+            var substeps = $$('.substep', activeStep);
+            if (substeps) {
+                // if we have a substeps it will be a good idea to find that one which is active
+                var activeSubstep = getActiveSubstep();
+
+                // If we don't have, our next substep will be the first one
+                var nextSubstep;
+                if (activeSubstep) {
+                    nextSubstep = substeps.indexOf(activeSubstep) + 1;
+                }
+                else {
+                    nextSubstep = 0;
+                }
+
+                // Check is the next step real and go to it
+                if (nextSubstep < substeps.length) {
+                    nextSubstep = substeps[nextSubstep];
+                    return gotoSubstep(nextSubstep);
+                }
+            }
+
+            // we dotn't have any substeps or we have to go to the next slide
             var next = steps.indexOf( activeStep ) + 1;
             next = next < steps.length ? steps[ next ] : steps[ 0 ];
             
@@ -602,6 +687,12 @@
                 event.target.classList.remove("present");
                 event.target.classList.add("past");
             }, false);
+
+            // Make all substeps future
+            var substeps = $$('.substep');
+            substeps.forEach(function (substep) {
+                substep.classList.add("future");
+            });
             
         }, false);
         
