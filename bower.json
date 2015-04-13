@@ -1,9 +1,10 @@
 {
-  "name": "impress-js",
-  "version": "0.5.3",
+  "name": "jspres-impress-js",
+  "version": "0.0.1",
   "main": "./js/impress.js",
-  "description": "It's a presentation framework based on the power of CSS3 transforms and transitions in modern browsers and inspired by the idea behind prezi.com",
+  "description": "It's a fork of the awesome work of Bartek Szopka - impress.js but modified to be used in our editor JSpres.",
   "homepage": "https://github.com/bartaz/impress.js",
+  "private": "true",
   "license" : ["http://bartaz.mit-license.org/", "http://www.gnu.org/licenses/"],
   "main": [
     "./js/impress.js"

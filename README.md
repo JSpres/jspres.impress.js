@@ -6,7 +6,16 @@ It's a fork of the awesome work of [Bartek Szopka](https://github.com/bartaz) - 
 Here is a list of the most biggest changes from the original:
   - **hash support is disabled**
 
-For our purposses we don't want to change the broswer's url on every step, so we decided to turn this off. It's still in the code (commented), so if you want to use this version of the code you can enable it easily.
+For our purposses we don't want to change the browser's url on every step, so we decided to turn this off. We've added a way to configure ipmress on its initialization, you just have to pass a config object and we will do it. Here is an example how to disable the hash support:
+
+```
+var configuration = {
+  isHashEnabled: false
+};
+
+var api = impress('impress', configuration);
+api.init();
+```
 
   - **reinitSteps()**
 
@@ -15,12 +24,18 @@ We are extending the API with a custom function which is used to reinitialize th
   - **substeps**
 
 The substeps are a part that every presentation should contains and this is one of the main cons of the impress.js project.
-Now with this patch you can add a ```substep``` class to every element inside a step and you don't have to worry about anything else. We will move on every substep in a slide. For now we do not support inline animations and transitions for the substeps but you can style them with pure CSS. All you have to know is the classes which specifies their state.
+Now with this patch you can add a ```substep``` class to every element inside a step and you don't have to wory about anything else. We will move on every substep in a slide. For now we do not support inline animations and transitions for the substeps but you can style them with pure CSS. All you have to know is the classes which specifies their state.
 There are 3 classes - ```past```, ```entered``` and ```future``` and I think that their names are enough to understand how to use them. 
 
 **Warning**
 This version is still under dev and we make changes now, so if you find any bugs or problems you can nottify us with opening an issue or simply contribute to the project to fix them.
 
+  - **basic styles**
+
+Yes, right now the official imprss.js doesn't have a basic styles, it's jut contains only the styles for the demo presentation. We've filtered them and now the ```impress.css``` contains the basic styles which you need to start a new presentation.
+
+** Warning**
+This file contains basic styles for the browser interpreter and yhe impress.js messages, not skins for a better presentations. If you are looking for this you can take a look [here](https://github.com/JSpres/jspres-skins) and use our skins.
   
 
 # About JSpres

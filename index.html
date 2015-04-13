@@ -89,6 +89,7 @@
         When creating your own presentation get rid of this file. Start from scratch, it's fun!
         
     -->
+    <link href="css/impress.css" rel="stylesheet" />
     <link href="css/impress-demo.css" rel="stylesheet" />
     
     <link rel="shortcut icon" href="favicon.png" />
@@ -376,9 +377,12 @@ if ("ontouchstart" in document.documentElement) {
 -->
 <script src="js/impress.js"></script>
 <script>
-    var api = impress();
+    var configuration = {
+        isHashEnabled: false
+    };
+
+    var api = impress('impress', configuration);
     api.init();
-    api.goto(0);
 </script>
 
 <!--
