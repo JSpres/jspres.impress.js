@@ -1,20 +1,21 @@
 {
-  "name": "jspres-impress-js",
-  "version": "0.0.1",
-  "main": "./js/impress.js",
-  "description": "It's a fork of the awesome work of Bartek Szopka - impress.js but modified to be used in our editor JSpres.",
+  "name": "jspres.impress.js",
+  "version": "0.5.4",
   "homepage": "https://github.com/JSpres/jspres.impress.js",
-  "private": "true",
-  "license" : ["http://bartaz.mit-license.org/", "http://www.gnu.org/licenses/"],
-  "main": [
-    "./js/impress.js"
+  "authors": [
+    "Valentin Kirilov <val.kirilov@gmail.com>"
   ],
+  "description": "It's a fork of the awesome work of Bartek Szopka - impress.js but modified to be used in our editor JSpres.",
   "keywords": [
-    "slideshow",
-    "css3"
+    "jspres",
+    "impress.js"
   ],
-  "author": {
-    "name": "Bartek Szopka",
-    "web": "http://bartaz.github.com"
-  }
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
 }
