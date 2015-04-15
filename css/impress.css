@@ -279,3 +279,11 @@ body {
     Thanks for reading. I hope you enjoyed it at least as much as I enjoyed writing it
     for you.
 */
+
+.substep {
+    webkit-transition:  opacity 1s;
+    -moz-transition:    opacity 1s;
+    -ms-transition:     opacity 1s;
+    -o-transition:      opacity 1s;
+    transition:         opacity 1s;
+}

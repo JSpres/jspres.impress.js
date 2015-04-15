@@ -30,6 +30,11 @@ There are 3 classes - ```past```, ```entered``` and ```future``` and I think tha
 **Warning**
 This version is still under dev and we make changes now, so if you find any bugs or problems you can nottify us with opening an issue or simply contribute to the project to fix them.
 
+  - **substeps animations**
+
+What is impress.js without animations? Because of this we've added [animate.css](https://github.com/daneden/animate.css) to the lib and now we are supporting a really cool animations for the substeps, just add the class name of the animation inside ```data-animate-css``` attribute on the every substep and we will fdo the
+magic (don't forget to add the animate.min.css file to your page). If you don't want to use it, the substeps will use basic fade in/fade out animations by default.
+
   - **basic styles**
 
 Yes, right now the official imprss.js doesn't have a basic styles, it's jut contains only the styles for the demo presentation. We've filtered them and now the ```impress.css``` contains the basic styles which you need to start a new presentation.

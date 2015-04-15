@@ -585,10 +585,18 @@
                 activeSubstep.classList.remove("entered");
 
                 if (substep.classList.contains('past')) {
+                    // We are going back
                     activeSubstep.classList.remove("past");
                     activeSubstep.classList.add("future");
+
+                    // Remove animation classes
+                    if (activeSubstep.getAttribute('data-animate-css')) {
+                        activeSubstep.classList.remove(activeSubstep.getAttribute('data-animate-css'));
+                        activeSubstep.classList.remove('animated');
+                    }
                 }
                 else {
+                    // We are going to the next substep
                     activeSubstep.classList.add("past");
                 }
             }
@@ -596,6 +604,12 @@
             substep.classList.remove('future');
             substep.classList.add('entered');
             //substep.classList.add('past');
+
+            // Add animation classes
+            if (substep.getAttribute('data-animate-css')) {
+                substep.classList.add(substep.getAttribute('data-animate-css'));
+                substep.classList.add('animated');
+            }
 
 
         };
@@ -625,6 +639,11 @@
                         // that the user is not entered it
                         activeSubstep.classList.remove('entered');
                         activeSubstep.classList.add('future');
+
+                        if (activeSubstep.getAttribute('data-animate-css')) {
+                            activeSubstep.classList.remove('animated');
+                            activeSubstep.classList.remove(activeSubstep.getAttribute('data-animate-css'));
+                        }
                         return;
                     }
                 }
